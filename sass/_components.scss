@@ -1,10 +1,8 @@
 ///////////////////////////////////////////////////////////////
 ///Logo
-
 .logo {
   height: 3.25rem;
   margin-left: 2rem;
-
 }
 
 ///////////////////////////////////////////////////////////////
@@ -16,6 +14,11 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
 
   &__input {
     font-family: inherit;
@@ -62,9 +65,6 @@
     fill: var(--color-grey-dark-3);
   }
 }
-
-
-
 
 ///////////////////////////////////////////////////////////////
 ///User navigation
@@ -119,7 +119,6 @@
   }
 }
 
-
 ///////////////////////////////////////////////////////////////
 ///Side navigation
 
@@ -128,11 +127,23 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width:  $bp-medium) {
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: .5rem;
+      @media only screen and (max-width:  $bp-medium) {
+        margin-bottom: 0;
+      }
+    }
+
+    @media only screen and (max-width:  $bp-medium) {
+      flex: 1;
     }
   }
   
@@ -171,9 +182,16 @@
     z-index: 10;
     display: flex;
     align-items: center;
-  }
 
-  &__link:hover {
+    @media only screen and (max-width:  $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width:  $bp-small) {
+      flex-direction: column;
+      padding: 1.5rem .5rem;
+    }
 
   }
 
@@ -182,17 +200,28 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width:  $bp-small) {
+      margin-right: 0;
+      margin-bottom: .7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
 ///////////////////////////////////////////////////////////////
-///Side navigation
+///legal
 
 .legal {
   font-size: 1.2rem;
   text-align: center;
   color: var(--color-grey-light-4);
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 ///////////////////////////////////////////////////////////////
@@ -215,11 +244,16 @@
   border-bottom: var(--line);
 
   &__heading {
-  font-size: 2.25rem;
+    font-size: 2.25rem;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width:  $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -256,15 +290,27 @@
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
+
     &-average {
       font-size: 2.25rem;
       font-weight: 300;
       margin-bottom: -.3rem;
+
+      @media only screen and (max-width:  $bp-small) {
+        font-size: 1.8rem;
+      }
     }
 
     &-count {
       font-size: .8rem;
       text-transform: uppercase;
+
+      @media only screen and (max-width:  $bp-small) {
+        font-size: .5rem;
+      }
     }
   }
 }
@@ -348,18 +394,18 @@
     display: inline-block;
     height: 1rem;
     width: 1rem;
-    background-color: var(--color-primary);
 
     //older browsers
-    //background-image: url('../img/SVG/chevron-thin-right.svg');
-    //background-size: cover;
+    background-image: url('../img/SVG/chevron-thin-right.svg');
+    background-size: cover;
 
   //new browsers in support of the mask property
-    @supports (-webkit-mask-image: url('../img/SVG/chevron-thin-right.svg')) and ( -webkit-mask-size: cover){
+    @supports (-webkit-mask-image: url()) or (mask-image: url()){
       -webkit-mask-image: url('../img/SVG/chevron-thin-right.svg');
       -webkit-mask-size: cover;
       mask-image: url('../img/SVG/chevron-thin-right.svg');
       mask-size: cover;
+      background: var(--color-primary) none;
     }
   }
 }
@@ -379,7 +425,7 @@
   }
 
   &__friends {
-
+    display: flex;
   }
 
   &__photo {
@@ -390,7 +436,7 @@
     border: 3px solid #f4f2f2;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -405,6 +451,11 @@
   padding: 3rem;
   margin-bottom: 3.5rem;
   overflow: hidden;
+
+  @media only screen and (max-width:  $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -463,11 +514,20 @@
   padding: 3.5rem 0;
   text-align: center;
 
+  @media only screen and (max-width:  $bp-medium) {
+    padding: 2.5rem 0;
+  }
+
   &__book-now {
     font-size: 2rem;
     font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
+
+    @media only screen and (max-width:  $bp-smallest) {
+      font-size: 1.5rem;
+      padding:0 1rem;
+    }
   }
 }
 
@@ -520,6 +580,4 @@
     animation: pulsate 1s infinite;
     outline: none;
   }
-
-
 }
